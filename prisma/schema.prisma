@@ -14,8 +14,7 @@ model User {
   email        String        @unique
   password     String
   phone        String?
-  role         Role          @relation(fields: [roleId], references: [id])
-  roleId       String
+  role         Role          @default(USER)
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   appointments Appointment[]
@@ -24,15 +23,14 @@ model User {
 }
 
 model Product {
-  id          String    @id @unique @default(uuid())
+  id          String   @id @unique @default(uuid())
   brand       String
   name        String
   description String
   price       Float
   image       String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  admin       User      @relation(fields: [adminId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   adminId     String
 }
 
@@ -46,18 +44,16 @@ model Category {
 }
 
 model Service {
-  id          String    @id @unique @default(uuid())
+  id          String   @id @unique @default(uuid())
   name        String
   description String
   price       Float
   duration    Int
   image       String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  category    Category  @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  category    Category @relation(fields: [categoryId], references: [id])
   categoryId  String
-  admin       User      @relation(fields: [adminId], references: [id])
-  adminId     String
 }
 
 model Appointment {
@@ -69,10 +65,9 @@ model Appointment {
   date      DateTime @default(now())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  user      User     @relation(name: "user_appointments", fields: [userId], references: [id])
-  userId    String
-  admin     User     @relation(name: "admin_appointments", fields: [adminId], references: [id])
-  adminId   String
+
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
 }
 
 model Contact {
@@ -83,28 +78,25 @@ model Contact {
   sentAt    DateTime @default(now())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  user      User     @relation(name: "user_messages", fields: [userId], references: [id])
-  userId    String?
-  admin     User     @relation(name: "admin_messages", fields: [adminId], references: [id])
-  adminId   String
+
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
 }
 
-model Role {
-  id        String    @id @unique @default(uuid())
-  name      RoleName  @unique @default(USER)
-  users     User[]
-  read      Boolean   @default(true)
-  write     Boolean   @default(false)
-  update    Boolean   @default(false)
-  apply     Boolean   @default(false)
-  delete    Boolean   @default(false)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
-}
+// model Role {
+//   id        String    @id @unique @default(uuid())
+//   name      RoleName  @unique @default(USER)
+//   users     User[]
+//   read      Boolean   @default(true)
+//   write     Boolean   @default(false)
+//   update    Boolean   @default(false)
+//   apply     Boolean   @default(false)
+//   delete    Boolean   @default(false)
+//   createdAt DateTime  @default(now())
+//   updatedAt DateTime? @updatedAt
+// }
 
-enum RoleName {
+enum Role {
   USER
   ADMIN
 }
-
-
