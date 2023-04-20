@@ -19,7 +19,8 @@ model User {
   updatedAt    DateTime      @updatedAt
   appointments Appointment[]
   sentMessages Contact[]
-  isAdmin      Boolean       @default(false)
+  product      Product[]
+  service      Service[]
 }
 
 model Product {
@@ -31,7 +32,8 @@ model Product {
   image       String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  adminId     String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
 }
 
 model Category {
@@ -41,6 +43,7 @@ model Category {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   services    Service[]
+  
 }
 
 model Service {
@@ -54,6 +57,8 @@ model Service {
   updatedAt   DateTime @updatedAt
   category    Category @relation(fields: [categoryId], references: [id])
   categoryId  String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
 }
 
 model Appointment {
@@ -65,9 +70,8 @@ model Appointment {
   date      DateTime @default(now())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  User   User?   @relation(fields: [userId], references: [id])
-  userId String?
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
 }
 
 model Contact {
@@ -78,23 +82,9 @@ model Contact {
   sentAt    DateTime @default(now())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  User   User?   @relation(fields: [userId], references: [id])
-  userId String?
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
 }
-
-// model Role {
-//   id        String    @id @unique @default(uuid())
-//   name      RoleName  @unique @default(USER)
-//   users     User[]
-//   read      Boolean   @default(true)
-//   write     Boolean   @default(false)
-//   update    Boolean   @default(false)
-//   apply     Boolean   @default(false)
-//   delete    Boolean   @default(false)
-//   createdAt DateTime  @default(now())
-//   updatedAt DateTime? @updatedAt
-// }
 
 enum Role {
   USER
