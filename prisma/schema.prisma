@@ -34,19 +34,33 @@ model Product {
   updatedAt   DateTime @updatedAt
   user        User     @relation(fields: [userId], references: [id])
   userId      String
-  category    Category @relation(fields: [categoryId], references: [id])
+  category    Service_Product @relation(fields: [categoryId], references: [id])
   categoryId  String
 }
 
-model Category {
+model Service_Product {
+  id          String    @id @unique @default(uuid())
+  brand       String
+  category    String
+  name        String
+  price       Float
+  image       String
+  description String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+}
+
+model Service_Category {
   id          String    @id @unique @default(uuid())
   name        String
   description String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   services    Service[]
-  products    Product[]
+  
 }
+
 
 model Service {
   id          String   @id @unique @default(uuid())
@@ -57,7 +71,7 @@ model Service {
   image       String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  category    Category @relation(fields: [categoryId], references: [id])
+  category    Service_Category @relation(fields: [categoryId], references: [id])
   categoryId  String
   user        User     @relation(fields: [userId], references: [id])
   userId      String
