@@ -53,7 +53,7 @@ model Service {
   appointments Appointment[]
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
-  category     Category[]      @relation(name: "CategoryService")
+  categories     Category[]      @relation(name: "CategoryService")
  
 }
 
