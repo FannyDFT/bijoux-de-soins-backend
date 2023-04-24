@@ -26,6 +26,7 @@ model Product {
   name        String
   description String
   price       Float
+  categories Category[] @relation(name: "ProductCategory")
   stock       Int     @default(0)
   image       String
   createdAt   DateTime @default(now())
@@ -36,9 +37,10 @@ model Category {
   id          String    @id @unique @default(uuid())
   name        String
   description String
+  products    Product[] @relation(name: "ProductCategory")
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  services    Service[]
+  services    Service[] @relation(name: "CategoryService")
 }
 
 model Service {
@@ -51,8 +53,8 @@ model Service {
   appointments Appointment[]
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
-  category     Category      @relation(fields: [categoryId], references: [id])
-  categoryId   String
+  category     Category[]      @relation(name: "CategoryService")
+ 
 }
 
 model Appointment {
