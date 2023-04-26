@@ -1,13 +1,9 @@
-import {
-  DeleteMessage,
-  IdParam,
-  ResponseError,
-} from "./../../types/globalTypes";
-import { RequestHandler } from "express";
-import { Category } from "@prisma/client";
+import { ResponseError, IdParam, DeleteMessage } from "../../types/globalTypes";
 import { ParsedUrlQuery } from "querystring";
+import { Category } from "@prisma/client";
+import { RequestHandler } from "express";
 
-type CategoryBodyCreate = {
+type CategoryBodyPost = {
   name: string;
   description: string;
   image: string;
@@ -19,21 +15,8 @@ interface CategoryController {
   create: RequestHandler<
     null,
     Category | ResponseError,
-    CategoryBodyCreate,
+    CategoryBodyPost,
     null
-  >;
-  update: RequestHandler<
-    IdParam,
-    Category | ResponseError,
-    CategoryBodyCreate,
-    null
-  >;
-  delete: RequestHandler<IdParam, DeleteMessage | ResponseError, null, null>;
-  uploadImage: RequestHandler<
-    IdParam,
-    Category | ResponseError,
-    null,
-    ParsedUrlQuery
   >;
 }
 
