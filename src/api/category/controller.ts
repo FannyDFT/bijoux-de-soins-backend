@@ -4,7 +4,7 @@ import getOne from "./handlers/getOne";
 import create from "./handlers/create";
 import update from "./handlers/update";
 import deleteCategory from "./handlers/delete";
-import uploadImage from "../product/handlers/uploadImage";
+import uploadImage from "./handlers/uploadImage";
 
 const controller: CategoryController = {
   getAll,

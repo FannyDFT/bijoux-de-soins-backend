@@ -1,14 +1,14 @@
-import { Router } from "express";
-import controller from "../product/controller";
+// import { Router } from "express";
+// import controller from "../product/controller";
 
-const router = Router();
+// const router = Router();
 
-router.get("/", controller.getAll);
-router.get("/:id", controller.getOne);
-router.put("/:id", controller.update);
-router.post("/", controller.create);
-router.delete("/:id", controller.delete);
-router.post("/:id/upload/image", controller.uploadImage);
-router.put("/:id/upload/image", controller.uploadImage);
+// router.get("/", controller.getAll);
+// router.get("/:id", controller.getOne);
+// router.put("/:id", controller.update);
+// router.post("/", controller.create);
+// router.delete("/:id", controller.delete);
+// router.post("/:id/upload/image", controller.uploadImage);
+// router.put("/:id/upload/image", controller.uploadImage);
 
-export default router;
+// export default router;
