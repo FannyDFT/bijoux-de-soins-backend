@@ -18,6 +18,19 @@ interface CategoryController {
     CategoryBodyPost,
     null
   >;
+  update: RequestHandler<
+    IdParam,
+    Category | ResponseError,
+    CategoryBodyPost,
+    null
+  >;
+  delete: RequestHandler<IdParam, DeleteMessage | ResponseError, null, null>;
+  uploadImage: RequestHandler<
+    IdParam,
+    Category | ResponseError,
+    null,
+    ParsedUrlQuery
+  >;
 }
 
 export default CategoryController;
