@@ -3,13 +3,14 @@ import CategoryController from "../interface";
 
 const updateCategory: CategoryController["update"] = async (req, res) => {
   const { id } = req.params;
-  const { name, description } = req.body;
+  const { name, description, image } = req.body;
   try {
     const updatedCategory = await prisma.category.update({
       where: { id },
       data: {
         name,
         description,
+        image,
       },
     });
     res.status(200).json(updatedCategory);
