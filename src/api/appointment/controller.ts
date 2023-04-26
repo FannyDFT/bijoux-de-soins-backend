@@ -1,18 +1,16 @@
-import ProductController from "./interface";
+import AppointmentController from "./interface";
 import getAll from "./handlers/getAll";
 import getOne from "./handlers/getOne";
 import create from "./handlers/create";
 import update from "./handlers/update";
-import deleteProduct from "./handlers/delete";
-import uploadImage from "./handlers/uploadImage";
+import deleteAppointment from "./handlers/delete";
 
-const controller: ProductController = {
+const controller: AppointmentController = {
   getAll,
   getOne,
   create,
   update,
-  delete: deleteProduct,
-  uploadImage,
+  delete: deleteAppointment,
 };
 
 export default controller;
