@@ -2,10 +2,13 @@ import { RequestHandler } from "express";
 import { DeleteMessage, IdParam, ResponseError } from "../../types/globalTypes";
 import { User } from "@prisma/client";
 
-type UserBodyCreate = Omit<
-  User,
-  "id" | "createdAt" | "updatedAt" | "consultantId" | "roleId"
->;
+type UserBodyCreate = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  phone?: string;
+};
 
 interface UserController {
   getAll: RequestHandler<null, User[] | ResponseError, null, null>;
