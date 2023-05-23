@@ -34,14 +34,18 @@ model Product {
 }
 
 model Category {
-  id          String    @id @unique @default(uuid())
-  name        String
-  description String
-  image       String
-  products    Product[] @relation(name: "ProductCategory")
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  services    Service[] @relation(name: "CategoryService")
+  id               String       @id @unique @default(uuid())
+  name             String
+  description      String
+  image            String
+  type             CategoryType
+  products         Product[]    @relation(name: "ProductCategory")
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  services         Service[]    @relation(name: "ServiceCategory")
+  categoryParent   Category?    @relation("CategoryChildRelation", fields: [parentId], references: [id])
+  categoryChildren Category[]   @relation("CategoryChildRelation")
+  parentId         String?
 }
 
 model Service {
@@ -54,12 +58,12 @@ model Service {
   appointments Appointment[]
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
-  categories   Category[]    @relation(name: "CategoryService")
+  categoryId   String
+  category     Category      @relation("ServiceCategory", fields: [categoryId], references: [id])
 }
 
 model Appointment {
   id        String   @id @unique @default(uuid())
-  name      String
   service   Service  @relation(fields: [serviceId], references: [id])
   serviceId String
   date      DateTime @default(now())
@@ -72,4 +76,9 @@ model Appointment {
 enum Role {
   USER
   ADMIN
+}
+
+enum CategoryType {
+  PRODUCT
+  SERVICE
 }

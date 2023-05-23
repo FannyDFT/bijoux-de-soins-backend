@@ -1,6 +1,4 @@
-/* eslint-disable no-console */
 import { UploadApiResponse } from "cloudinary";
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import asyncFormParse from "../../../utils/asyncFormParse";
 import cloudinaryUpload from "../../../utils/cloudinaryUpload";
 import prisma from "../../../../prisma/client";
