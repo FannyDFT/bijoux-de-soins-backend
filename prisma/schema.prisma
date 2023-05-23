@@ -59,7 +59,7 @@ model Service {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   categoryId   String
-  category     Category      @relation("ServiceToChild", fields: [categoryId], references: [id])
+  category     Category      @relation("ServiceCategory", fields: [categoryId], references: [id])
 }
 
 model Appointment {
