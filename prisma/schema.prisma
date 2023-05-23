@@ -42,7 +42,7 @@ model Category {
   products         Product[]    @relation(name: "ProductCategory")
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
-  services         Service[]    @relation(name: "ServiceToChild")
+  services         Service[]    @relation(name: "ServiceCategory")
   categoryParent   Category?    @relation("CategoryChildRelation", fields: [parentId], references: [id])
   categoryChildren Category[]   @relation("CategoryChildRelation")
   parentId         String?
