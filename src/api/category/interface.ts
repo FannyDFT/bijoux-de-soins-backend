@@ -16,7 +16,12 @@ type CategoryBodyPost = {
 };
 
 interface CategoryController {
-  getAll: RequestHandler<null, Category[] | ResponseError, null, null>;
+  getAll: RequestHandler<
+    null,
+    Category[] | ResponseError,
+    null,
+    { type?: CategoryType }
+  >;
   getOne: RequestHandler<IdParam, Category | ResponseError, null, null>;
   create: RequestHandler<
     null,

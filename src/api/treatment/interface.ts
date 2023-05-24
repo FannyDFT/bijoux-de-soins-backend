@@ -1,10 +1,5 @@
 import { RequestHandler } from "express";
-import {
-  CategoryId,
-  IdParam,
-  ParentId,
-  ResponseError,
-} from "../../types/globalTypes";
+import { CategoryId, IdParam, ResponseError } from "../../types/globalTypes";
 import { Service } from "@prisma/client";
 import { ParsedUrlQuery } from "querystring";
 

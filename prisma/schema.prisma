@@ -22,7 +22,6 @@ model User {
 
 model Product {
   id          String   @id @unique @default(uuid())
-  brand       String
   name        String
   description String
   price       Float
