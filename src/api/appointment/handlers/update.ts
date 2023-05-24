@@ -3,7 +3,7 @@ import AppointmentController from "../interface";
 
 const updateAppointment: AppointmentController["update"] = async (req, res) => {
   const { id } = req.params;
-  const { name, serviceId, userId } = req.body;
+  const { serviceId, userId } = req.body;
 
   try {
     const updatedAppointment = await prisma.appointment.update({
@@ -11,7 +11,6 @@ const updateAppointment: AppointmentController["update"] = async (req, res) => {
         id,
       },
       data: {
-        name,
         serviceId,
         userId,
       },

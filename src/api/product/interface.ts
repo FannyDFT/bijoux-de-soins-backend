@@ -1,4 +1,5 @@
 import {
+  CategoryId,
   DeleteMessage,
   IdParam,
   ResponseError,
@@ -17,7 +18,7 @@ type ProductBodyCreate = {
 };
 
 interface ProductController {
-  getAll: RequestHandler<null, Product[] | ResponseError, null, null>;
+  getAll: RequestHandler<null, Product[] | ResponseError, null, CategoryId>;
   getOne: RequestHandler<IdParam, Product | ResponseError, null, null>;
   create: RequestHandler<
     null,

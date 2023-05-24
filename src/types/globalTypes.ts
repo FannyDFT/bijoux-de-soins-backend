@@ -13,3 +13,7 @@ export type DeleteMessage = {
 export type Booleen = {
   booleen: true | false;
 };
+
+export type ParentId = { parentId: string };
+
+export type CategoryId = { categoryId: string };
