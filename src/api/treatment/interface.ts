@@ -1,5 +1,10 @@
 import { RequestHandler } from "express";
-import { IdParam, ResponseError } from "../../types/globalTypes";
+import {
+  CategoryId,
+  IdParam,
+  ParentId,
+  ResponseError,
+} from "../../types/globalTypes";
 import { Service } from "@prisma/client";
 import { ParsedUrlQuery } from "querystring";
 
@@ -13,7 +18,7 @@ type ServiceBodyCreate = {
 };
 
 interface ServiceController {
-  getAll: RequestHandler<null, Service[] | ResponseError, null, null>;
+  getAll: RequestHandler<null, Service[] | ResponseError, null, CategoryId>;
   getOne: RequestHandler<IdParam, Service | ResponseError, null, null>;
   update: RequestHandler<
     IdParam,

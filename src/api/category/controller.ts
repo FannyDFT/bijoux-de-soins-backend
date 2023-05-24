@@ -4,6 +4,7 @@ import getOne from "./handlers/getOne";
 import uploadImage from "./handlers/uploadImage";
 import update from "./handlers/update";
 import deleteCategory from "./handlers/delete";
+import getChildCategories from "./handlers/getChildCategories";
 
 import create from "./handlers/create";
 
@@ -14,6 +15,7 @@ const controller: CategoryController = {
   update,
   delete: deleteCategory,
   uploadImage,
+  getChildCategories,
 };
 
 export default controller;

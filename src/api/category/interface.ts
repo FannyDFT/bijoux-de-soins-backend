@@ -1,12 +1,18 @@
-import { ResponseError, IdParam, DeleteMessage } from "../../types/globalTypes";
+import {
+  ResponseError,
+  IdParam,
+  DeleteMessage,
+  ParentId,
+} from "../../types/globalTypes";
 import { ParsedUrlQuery } from "querystring";
-import { Category } from "@prisma/client";
+import { Category, CategoryType } from "@prisma/client";
 import { RequestHandler } from "express";
 
 type CategoryBodyPost = {
   name: string;
   description: string;
   image: string;
+  type: CategoryType;
 };
 
 interface CategoryController {
@@ -30,6 +36,12 @@ interface CategoryController {
     Category | ResponseError,
     null,
     ParsedUrlQuery
+  >;
+  getChildCategories: RequestHandler<
+    ParentId,
+    Category[] | ResponseError,
+    null,
+    null
   >;
 }
 

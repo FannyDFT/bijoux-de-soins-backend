@@ -9,11 +9,9 @@ const deleteAppointment: AppointmentController["delete"] = async (req, res) => {
         id,
       },
     });
-    res
-      .status(200)
-      .json({
-        message: `appointment "${appointment.name}" deleted successfully`,
-      });
+    res.status(200).json({
+      message: `appointment "${appointment}" deleted successfully`,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error });

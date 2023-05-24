@@ -14,7 +14,7 @@ const deleteCategory: CategoryController["delete"] = async (req, res) => {
       .json({ message: `Category "${category.name}" deleted successfully` });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: error });
+    res.status(500).json({ message: "Failed to delete category." });
   }
 };
 

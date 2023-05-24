@@ -13,7 +13,7 @@ const getOneCategory: CategoryController["getOne"] = async (req, res) => {
     res.status(200).json(category);
   } catch (error) {
     console.log(error);
-    res.status(200).json({ message: error });
+    res.status(200).json({ message: "Failed to fetch category." });
   }
 };
 

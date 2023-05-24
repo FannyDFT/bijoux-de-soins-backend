@@ -2,7 +2,8 @@ import prisma from "../../../../prisma/client";
 import ServiceController from "../interface";
 
 const createService: ServiceController["create"] = async (req, res) => {
-  const { name, description, price, duration, image } = req.body;
+  const { name, description, price, duration, image, categoryId } = req.body;
+
   try {
     const newService = await prisma.service.create({
       data: {
@@ -11,6 +12,7 @@ const createService: ServiceController["create"] = async (req, res) => {
         price,
         duration,
         image,
+        category: { connect: { id: categoryId } },
       },
     });
     res.status(200).json(newService);
