@@ -21,16 +21,17 @@ model User {
 }
 
 model Product {
-  id          String     @id @unique @default(uuid())
+  id          String   @id @unique @default(uuid())
   brand       String
   name        String
   description String
   price       Float
-  categories  Category[] @relation(name: "ProductCategory")
-  stock       Int        @default(0)
+  stock       Int      @default(0)
   image       String
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  categoryId  String
+  category    Category @relation("ProductCategory", fields: [categoryId], references: [id])
 }
 
 model Category {
