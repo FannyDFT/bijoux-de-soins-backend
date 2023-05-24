@@ -9,7 +9,6 @@ import { Product } from "@prisma/client";
 import { ParsedUrlQuery } from "querystring";
 
 type ProductBodyCreate = {
-  brand: string;
   name: string;
   description: string;
   price: number;

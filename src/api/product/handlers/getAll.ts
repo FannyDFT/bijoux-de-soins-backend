@@ -9,11 +9,7 @@ const getAllProducts: ProductController["getAll"] = async (req, res) => {
     if (categoryId) {
       products = await prisma.product.findMany({
         where: {
-          categories: {
-            some: {
-              id: categoryId,
-            },
-          },
+          categoryId: categoryId,
         },
       });
     } else {
