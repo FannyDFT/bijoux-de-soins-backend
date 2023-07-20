@@ -26,7 +26,8 @@ const signIn: IAuthController["signIn"] = async (req, res, next) => {
     // password match
     const { password: _, ...userWithoutPassword } = logUser;
     const token = sign({ ...userWithoutPassword }, secret);
-    res.setHeader("authorization", `Bearer ${token}`);
+
+    res.setHeader("Authorization", `Bearer ${token}`);
 
     return res.status(200).json({
       ...userWithoutPassword,

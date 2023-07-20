@@ -11,8 +11,9 @@ const app = Express();
 
 //ajoute un middleware à l'application app qui analyse les corps de requête entrants en JSON
 app.use(Express.json());
-//autre middleware qui configure les options de CORS, permet toutes les requêtes en prevenance de n'importe quel domaine
 app.use(cors({ origin: "*" }));
+//autre middleware qui configure les options de CORS, permet toutes les requêtes en prevenance de n'importe quel domaine
+app.use(cors({ origin: "*", exposedHeaders: ["Authorization"] }));
 
 //définit une route qui correspond à l'URL"/" et qui gère les requêtes GET
 app.use("/api/v1", api);
