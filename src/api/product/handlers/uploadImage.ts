@@ -13,6 +13,7 @@ const uploadImage: ProductController["uploadImage"] = async (req, res) => {
     const { files, fields } = await asyncFormParse(req);
     console.log(files, fields);
     const cloudinaryResponse = await cloudinaryUpload(files.image[0].path);
+
     if (!cloudinaryResponse) {
       throw new Error("upload error");
     }
