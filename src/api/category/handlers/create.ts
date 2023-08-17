@@ -2,7 +2,7 @@ import prisma from "../../../../prisma/client";
 import CategoryController from "../interface";
 
 const createCategory: CategoryController["create"] = async (req, res) => {
-  const { name, description, image } = req.body;
+  const { name, description, image, type } = req.body;
 
   try {
     const newCategory = await prisma.category.create({
@@ -10,6 +10,7 @@ const createCategory: CategoryController["create"] = async (req, res) => {
         name,
         description,
         image,
+        type,
       },
     });
     res.status(200).json(newCategory);

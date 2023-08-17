@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import cloudinary, { UploadApiResponse } from "cloudinary";
 
 cloudinary.v2.config({

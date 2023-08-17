@@ -1,4 +1,5 @@
 import {
+  CategoryId,
   DeleteMessage,
   IdParam,
   ResponseError,
@@ -8,7 +9,6 @@ import { Product } from "@prisma/client";
 import { ParsedUrlQuery } from "querystring";
 
 type ProductBodyCreate = {
-  brand: string;
   name: string;
   description: string;
   price: number;
@@ -17,7 +17,7 @@ type ProductBodyCreate = {
 };
 
 interface ProductController {
-  getAll: RequestHandler<null, Product[] | ResponseError, null, null>;
+  getAll: RequestHandler<null, Product[] | ResponseError, null, CategoryId>;
   getOne: RequestHandler<IdParam, Product | ResponseError, null, null>;
   create: RequestHandler<
     null,

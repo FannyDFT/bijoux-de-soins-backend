@@ -3,7 +3,6 @@ import { RequestHandler } from "express";
 import { DeleteMessage, IdParam, ResponseError } from "../../types/globalTypes";
 
 type AppointmentBodyCreate = {
-  name: string;
   serviceId: string;
   userId: string;
 };
