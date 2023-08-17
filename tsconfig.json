@@ -10,5 +10,10 @@
     "declaration": true,
     "typeRoots": ["./types"]
   },
-  "exclude": ["dist", "prisma", "node_modules"]
+  "exclude": [
+    "dist",
+    "prisma",
+    "tests",
+    "./dist/**/*" // This is what fixed it!
+  ]
 }

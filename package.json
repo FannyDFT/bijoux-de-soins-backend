@@ -5,6 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
+    "deploy": "npm run build && node ./dist/src/index.js",
+    "build": "npm run prisma:generate && tsc",
+    "migrate:reset": "prisma migrate reset",
+    "migrate:create": "prisma migrate dev --create-only",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "prisma:generate": "prisma generate",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 5",
     "preview": "vite preview",
     "prepare": "husky install",
